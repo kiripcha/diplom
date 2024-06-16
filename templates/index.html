@@ -1,0 +1,46 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Предсказание стоимости ценных бумаг</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type=text] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+    <h1>Предсказание стоимости ценных бумаг</h1>
+    <form method="post" style="width: 80%;">
+        <input type="text" name="text" placeholder="Введите название акции" style="width: 30%;">
+        <button type="submit">Построить</button>
+    </form>
+    {% if image %}
+        <h2>График:</h2>
+        <img src="data:image/png;base64,{{ image|safe }}" alt="График">
+    {% endif %}
+    {% if result %}
+        <h2>Метрики:</h2>
+        <div style="text-align: center;">{{ result|safe }}</div>
+    {% endif %}
+</body>
+</html>
